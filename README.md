@@ -73,4 +73,5 @@ Puppet Version >= 3.4.0, due to specific hiera usage.
 
 * make it work with puppet pre 3.4 
 * make it work wit Redhat like systems
+* check ../VERSION for Version to install
 
