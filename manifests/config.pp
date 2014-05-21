@@ -8,7 +8,8 @@ class dokuwiki::config (
 
   file { ["${basedir}/${version_string}/conf",
           "${basedir}/${version_string}/data",
-          "${basedir}/${version_string}/lib/plugins"]:
+          "${basedir}/${version_string}/lib/plugins",
+          "${basedir}/${version_string}/lib/tpl"]:
     ensure  => directory,
     recurse => true,
     owner   => $dokuwiki::params::www_owner,
