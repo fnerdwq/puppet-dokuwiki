@@ -20,6 +20,10 @@
 #   Stable is not automatically updated!
 #   *Optional* (defaults to stable)
 #
+# [*digest*]
+#   MD5 digest of download digest.
+#   *Optional* (defaults to undef)
+#
 # === Examples
 #
 # include dokuwiki
@@ -36,12 +40,14 @@ class dokuwiki (
   $basedir       = $dokuwiki::params::basedir,
   $download_url  = $dokuwiki::params::download_url,
   $version       = $dokuwiki::params::version,
+  $digest        = $dokuwiki::params::digest,
 ) inherits dokuwiki::params {
 
   class {'dokuwiki::install':
     download_url => $download_url,
     basedir      => $basedir,
     version      => $version,
+    digest       => $digest,
   }
   -> class {'dokuwiki::config':
     basedir => $basedir,

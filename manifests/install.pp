@@ -3,6 +3,7 @@ class dokuwiki::install (
   $download_url  = $dokuwiki::params::download_url,
   $basedir       = $dokuwiki::params::basedir,
   $version       = $dokuwiki::params::version,
+  $digest        = $dokuwiki::params::digest,
 ) {
 
   ensure_resource('file', '/var/local/packages', {'ensure' => 'directory'})
@@ -19,6 +20,14 @@ class dokuwiki::install (
     target           => $basedir,
     root_dir         => $version_string,
     strip_components => 1,
+  }
+
+  if $digest {
+    Archive <|title == $version_string|> {
+      checksum         => true,
+      digest_string    => $digest,
+      digest_type      => 'md5',
+    }
   }
 
   # to avoid double directory handling (basedir it is created by apache::vhost)

@@ -4,6 +4,7 @@ class dokuwiki::params {
   $basedir      = '/var/www'
   $download_url = 'http://download.dokuwiki.org/src/dokuwiki'
   $version      = 'stable' # or e.g. 2014-05-05
+  $digest       = undef
 
   case $::osfamily {
     'Debian': {
