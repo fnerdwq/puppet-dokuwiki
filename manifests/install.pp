@@ -20,6 +20,7 @@ class dokuwiki::install (
     target           => $basedir,
     root_dir         => $version_string,
     strip_components => 1,
+    dependency_class => [],
   }
 
   if $digest {
